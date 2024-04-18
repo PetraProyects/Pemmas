@@ -1,0 +1,553 @@
+USE [NuevaEsperanza]
+GO
+/****** Object:  Table [dbo].[AforoTKs]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AforoTKs](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TanqueId] [int] NULL,
+	[Nivel] [float] NULL,
+	[Volumen] [float] NULL,
+	[Incremento] [float] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Alarmas]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Alarmas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PozoId] [int] NULL,
+	[VariableProcesoId] [int] NULL,
+	[HH] [real] NULL,
+	[H] [real] NULL,
+	[L] [real] NULL,
+	[LL] [real] NULL,
+	[Habilitado] [int] NULL,
+ CONSTRAINT [PK_Alarmas] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Balances]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Balances](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TanqueId] [int] NULL,
+	[PozoId] [int] NULL,
+	[CintaId] [int] NULL,
+	[TermometroId] [int] NULL,
+	[UsuarioId] [int] NULL,
+	[Fecha] [datetime] NULL,
+	[TipoMovimiento] [varchar](50) NULL,
+	[Nivel] [float] NULL,
+	[Interfase] [float] NULL,
+	[Api] [float] NULL,
+	[TemFluidoApi] [float] NULL,
+	[TemAmbiente] [float] NULL,
+	[TemTanque] [float] NULL,
+	[KarlFisher] [float] NULL,
+	[Syw] [float] NULL,
+	[IdentificadorPrueba] [int] NULL,
+	[FactorCinta] [float] NULL,
+	[FactorInterface] [float] NULL,
+	[FactorTemTanque] [float] NULL,
+	[Tov] [float] NULL,
+	[Fw] [float] NULL,
+	[Nsv] [float] NULL,
+	[AguaNeta] [float] NULL,
+	[DeltaNivel] [float] NULL,
+	[DeltaInterfase] [float] NULL,
+	[DeltaTov] [float] NULL,
+	[DeltaFw] [float] NULL,
+	[DeltaGov] [float] NULL,
+	[DeltaGsv] [float] NULL,
+	[DeltaNsv] [float] NULL,
+	[DeltaAguaNeta] [float] NULL,
+	[Observacion] [varchar](100) NULL,
+	[NombreUsuario] [varchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CalibracionTermometros]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CalibracionTermometros](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nominal] [float] NULL,
+	[Correccion] [float] NULL,
+	[TermometroId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cintas]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cintas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](100) NULL,
+	[Descripcion] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Conductors]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Conductors](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](200) NULL,
+	[Cedula] [varchar](200) NULL,
+	[Descripcion] [varchar](500) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[EcopetrolMaterials]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EcopetrolMaterials](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [varchar](200) NULL,
+	[Codigo] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Empresas]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Empresas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](200) NULL,
+	[Nit] [varchar](200) NULL,
+	[Descripcion] [varchar](500) NULL,
+	[Codigo] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FormatoCargas]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FormatoCargas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[OrdenCargue] [varchar](50) NULL,
+	[FechaEnturne] [datetime] NULL,
+	[FechaLlamado] [datetime] NULL,
+	[FechaInicioLlenado] [datetime] NULL,
+	[FechaFinLlenado] [datetime] NULL,
+	[FechaInicioTransito] [datetime] NULL,
+	[EcopetrolMaterial] [varchar](50) NULL,
+	[EcopetrolMaterialCod] [varchar](20) NULL,
+	[OfertaDiariaId] [int] NULL,
+	[Sellos] [varchar](200) NULL,
+	[NumGuia] [varchar](20) NULL,
+	[GovCarga] [float] NULL,
+	[GsvCarga] [float] NULL,
+	[NsvCarga] [float] NULL,
+	[BSWCarga] [float] NULL,
+	[TempCarga] [float] NULL,
+	[APICarga] [float] NULL,
+	[FactorTempCarga] [float] NULL,
+	[Azufre] [float] NULL,
+	[SalPTB] [float] NULL,
+	[PresVaporReid] [float] NULL,
+	[IncertiExpandidoAUPorcen] [float] NULL,
+	[IncertiExpandidoUBls] [float] NULL,
+	[Observaciones] [varchar](200) NULL,
+	[GUT2] [varchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FormatoDescargueNafs]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FormatoDescargueNafs](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[DocTr] [varchar](100) NULL,
+	[FinTransito] [datetime] NULL,
+	[LlamadoDescargue] [datetime] NULL,
+	[InicioEntrega] [datetime] NULL,
+	[FinEntrega] [datetime] NULL,
+	[RutaId] [int] NULL,
+	[MaterialDesc] [varchar](100) NULL,
+	[CodMaterial] [varchar](100) NULL,
+	[Cedula] [varchar](100) NULL,
+	[NombreConductor] [varchar](100) NULL,
+	[Placa] [varchar](100) NULL,
+	[Tanque] [varchar](100) NULL,
+	[EmpresaTr] [varchar](100) NULL,
+	[Sellos] [varchar](100) NULL,
+	[Guia] [varchar](100) NULL,
+	[GovDescarga] [float] NULL,
+	[GsvDescarga] [float] NULL,
+	[NsvDescarga] [float] NULL,
+	[BswDescarga] [float] NULL,
+	[TempDescarga] [float] NULL,
+	[Api60Descarga] [float] NULL,
+	[FactorTempDescarga] [float] NULL,
+	[IncertidumbreExpaPorcentDescarga] [float] NULL,
+	[IncertidumbreExpaBslDescarga] [float] NULL,
+	[Observaciones] [varchar](100) NULL,
+	[Gut2] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Guias]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Guias](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[NumeroGuia] [varchar](100) NULL,
+	[Lote] [varchar](100) NULL,
+	[Estado] [int] NULL,
+	[Fecha] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[NivelesDeLaCintas]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[NivelesDeLaCintas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nominal] [float] NULL,
+	[Correccion] [float] NULL,
+	[CintaId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OfertaDiarias]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OfertaDiarias](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[DocDeTransporte] [float] NULL,
+	[FechaCreacion] [datetime] NULL,
+	[EmpresaId] [int] NULL,
+	[Placa] [varchar](200) NULL,
+	[PlacaTanque] [varchar](200) NULL,
+	[ConductorId] [int] NULL,
+	[RutaId] [int] NULL,
+	[Observacion] [varchar](200) NULL,
+	[Disponible] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Operarios]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Operarios](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](255) NULL,
+	[Cedula] [varchar](255) NULL,
+	[Estado] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Pozos]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Pozos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[NombrePozo] [nvarchar](max) NOT NULL,
+	[Ubicacion] [nvarchar](max) NOT NULL,
+	[Operadora] [nvarchar](max) NOT NULL,
+	[Comentario] [nvarchar](max) NOT NULL,
+	[Estado] [varchar](20) NULL,
+	[Fre] [float] NULL,
+ CONSTRAINT [PK_Pozos] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PruebaPozos]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PruebaPozos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PozoId] [int] NULL,
+	[WhpPsig] [float] NULL,
+	[WhtF] [float] NULL,
+	[FrecuenciaHzPumpSpeedRpm] [float] NULL,
+	[PipPsigPumpTorqueLbFt] [float] NULL,
+	[PdpPsigTorquePorcent] [float] NULL,
+	[TempMotorF] [float] NULL,
+	[TempInTakeF] [float] NULL,
+	[Amp] [float] NULL,
+	[Volt] [float] NULL,
+	[ApiCabeza60F] [float] NULL,
+	[ApiMezcla60F] [float] NULL,
+	[SywCabezaPorcent] [float] NULL,
+	[SywMezclaPorcent] [float] NULL,
+	[ClorurosPpm] [float] NULL,
+	[Ph] [float] NULL,
+	[TasaInyNafSuperficieBpd] [float] NULL,
+	[TasaInyPorCapilarBpd] [float] NULL,
+	[PresInyNafPorCapilarPsi] [float] NULL,
+	[InhibidorCm] [float] NULL,
+	[RompedorCm] [float] NULL,
+	[Horas] [int] NULL,
+	[FechaInicio] [datetime] NULL,
+	[FechaFin] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Rutas]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Rutas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](255) NULL,
+	[Estado] [varchar](255) NULL,
+	[VigenciaHoras] [int] NULL,
+	[CodRuta] [varchar](100) NULL,
+	[Origen] [varchar](100) NULL,
+	[CodOrigen] [varchar](100) NULL,
+	[Destino] [varchar](100) NULL,
+	[CodDestino] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sellos]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sellos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IndiceSello] [varchar](100) NULL,
+	[NumeroSello] [int] NULL,
+	[Lote] [varchar](255) NULL,
+	[Estado] [int] NULL,
+	[CreatedAt] [datetime] NULL,
+	[EnUso] [int] NULL,
+	[Seleccionado] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tanques]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tanques](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[NombreTanque] [varchar](100) NULL,
+	[TipoFluido] [varchar](100) NULL,
+	[Material] [varchar](50) NULL,
+	[TBase] [float] NULL,
+	[Capacidad] [float] NULL,
+ CONSTRAINT [PK_Tanques] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Termometros]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Termometros](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](100) NULL,
+	[Descripcion] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuarios](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](100) NULL,
+	[Identificacion] [varchar](100) NULL,
+	[NombreUsuario] [varchar](100) NULL,
+	[Clave] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[VariableProcesos]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[VariableProcesos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [nvarchar](max) NOT NULL,
+	[Unidad] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_VariableProcesos] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Vehiculos]    Script Date: 17/04/2024 6:56:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Vehiculos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TipoVehiculo] [varchar](255) NULL,
+	[Capacidad] [varchar](255) NULL,
+	[Estado] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Alarmas]  WITH CHECK ADD  CONSTRAINT [FK_Alarmas_Pozos_PozoId] FOREIGN KEY([PozoId])
+REFERENCES [dbo].[Pozos] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Alarmas] CHECK CONSTRAINT [FK_Alarmas_Pozos_PozoId]
+GO
+ALTER TABLE [dbo].[Alarmas]  WITH CHECK ADD  CONSTRAINT [FK_Alarmas_VariableProcesos_VariableProcesoId] FOREIGN KEY([VariableProcesoId])
+REFERENCES [dbo].[VariableProcesos] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Alarmas] CHECK CONSTRAINT [FK_Alarmas_VariableProcesos_VariableProcesoId]
+GO
+ALTER TABLE [dbo].[Balances]  WITH CHECK ADD FOREIGN KEY([CintaId])
+REFERENCES [dbo].[Cintas] ([Id])
+GO
+ALTER TABLE [dbo].[Balances]  WITH CHECK ADD FOREIGN KEY([PozoId])
+REFERENCES [dbo].[Pozos] ([Id])
+GO
+ALTER TABLE [dbo].[Balances]  WITH CHECK ADD FOREIGN KEY([TanqueId])
+REFERENCES [dbo].[Tanques] ([Id])
+GO
+ALTER TABLE [dbo].[Balances]  WITH CHECK ADD FOREIGN KEY([TermometroId])
+REFERENCES [dbo].[Termometros] ([Id])
+GO
+ALTER TABLE [dbo].[Balances]  WITH CHECK ADD FOREIGN KEY([UsuarioId])
+REFERENCES [dbo].[Usuarios] ([Id])
+GO
+ALTER TABLE [dbo].[CalibracionTermometros]  WITH CHECK ADD FOREIGN KEY([TermometroId])
+REFERENCES [dbo].[Termometros] ([Id])
+GO
+ALTER TABLE [dbo].[CalibracionTermometros]  WITH CHECK ADD FOREIGN KEY([TermometroId])
+REFERENCES [dbo].[Termometros] ([Id])
+GO
+ALTER TABLE [dbo].[FormatoCargas]  WITH CHECK ADD FOREIGN KEY([OfertaDiariaId])
+REFERENCES [dbo].[OfertaDiarias] ([Id])
+GO
+ALTER TABLE [dbo].[NivelesDeLaCintas]  WITH CHECK ADD FOREIGN KEY([CintaId])
+REFERENCES [dbo].[Cintas] ([Id])
+GO
+ALTER TABLE [dbo].[NivelesDeLaCintas]  WITH CHECK ADD FOREIGN KEY([CintaId])
+REFERENCES [dbo].[Cintas] ([Id])
+GO
+ALTER TABLE [dbo].[OfertaDiarias]  WITH CHECK ADD FOREIGN KEY([ConductorId])
+REFERENCES [dbo].[Conductors] ([Id])
+GO
+ALTER TABLE [dbo].[OfertaDiarias]  WITH CHECK ADD FOREIGN KEY([ConductorId])
+REFERENCES [dbo].[Conductors] ([Id])
+GO
+ALTER TABLE [dbo].[OfertaDiarias]  WITH CHECK ADD FOREIGN KEY([EmpresaId])
+REFERENCES [dbo].[Empresas] ([Id])
+GO
+ALTER TABLE [dbo].[OfertaDiarias]  WITH CHECK ADD FOREIGN KEY([EmpresaId])
+REFERENCES [dbo].[Empresas] ([Id])
+GO
+ALTER TABLE [dbo].[OfertaDiarias]  WITH CHECK ADD FOREIGN KEY([RutaId])
+REFERENCES [dbo].[Rutas] ([Id])
+GO
+ALTER TABLE [dbo].[OfertaDiarias]  WITH CHECK ADD FOREIGN KEY([RutaId])
+REFERENCES [dbo].[Rutas] ([Id])
+GO
+ALTER TABLE [dbo].[PruebaPozos]  WITH CHECK ADD FOREIGN KEY([PozoId])
+REFERENCES [dbo].[Pozos] ([Id])
+GO
